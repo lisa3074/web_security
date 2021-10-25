@@ -24,17 +24,14 @@
     .url_decode {
         font-size: 0.80rem;
         font-family: Arial, Helvetica, sans-serif;
-        padding-bottom: 1rem;
+    }
 
+    .sign_in_up {
+        padding-bottom: 1rem;
     }
 
     .url_decode {
         color: #989EBE;
-    }
-
-    .url_decode.admin {
-        color: #000000;
-        padding-bottom: 0;
     }
 
     form p {
@@ -96,15 +93,21 @@
         height: 5rem;
     }
 
+    .comment_wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
     .comment {
         display: flex;
         flex-direction: column;
         box-shadow: 1px 1px 10px #61697C55;
         margin-bottom: 1rem;
         padding: 1rem;
-        border-radius: 5px;
-        background-color: #61697C55;
+        border-radius: 20px 20px 20px 2px;
+        background-color: #3e507c36;
         width: 100%;
+        max-width: 500px;
     }
 
     .me p,
@@ -133,6 +136,8 @@
     .me {
         justify-content: flex-end;
         background-color: #fff;
+        margin-left: auto;
+        border-radius: 20px 20px 2px 20px;
     }
 
     .signup,

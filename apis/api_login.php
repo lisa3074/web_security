@@ -42,22 +42,22 @@ if(!$user){
   exit();
 } 
 
-$peber = "2C5eV0XtQVKrXA==";
+$pepper = "2C5eV0XtQVKrXA==";
 $timeStamp = $user['logged_time']; //timestamp
 $currentTime = time(); //timestamp
 $seconds = $currentTime - $timeStamp;
 $logged = $user['logger'] + 1;
 
  //If password doesn't match
-    //Take the input password and hash it, add the salt from the database (created onsignup) and the peber from this code base (static variable)
-    //cross check it with the password from the db (already hashed), the hashed salt from the db and the peber from this code base
-    if( hash("sha256", $_POST['password']).$user['salt'].$peber != $user['password'].$user['salt'].$peber){
+    //Take the input password and hash it, add the salt from the database (created onsignup) and the pepper from this code base (static variable)
+    //cross check it with the password from the db (already hashed), the hashed salt from the db and the pepper from this code base
+    if( hash("sha256", $_POST['password']).$user['salt'].$pepper != $user['password'].$user['salt'].$pepper){
   //if logger is more than or equal to 3
   if($user['logger'] >= 3){
     //If 5 minutes HAS passed since last try
     if($seconds > 300) { 
         $set_new_logger = 1;
-        require_once(__DIR__.'/postToDb.php');
+        require_once(__DIR__.'/api_update_user.php');
         header('Location: /login/Password does not match user (logger = 1)');
         exit();
       //If 5 minutes has NOT passed since last try
@@ -69,7 +69,7 @@ $logged = $user['logger'] + 1;
   //if logger is less than 3
   }else{
      $set_new_logger = $logged;
-      require_once(__DIR__.'/postToDb.php');
+      require_once(__DIR__.'/api_update_user.php');
       header("Location: /login/Password does not match user ($logged logged)");
       session_destroy();
       exit();
@@ -87,7 +87,7 @@ $logged = $user['logger'] + 1;
   //Set a session cookie with a random value to compare when posting a comment
    $_SESSION['csrf'] = $csrf;
   $set_new_logger = 0;
-  require_once(__DIR__.'/postToDb.php');        
+  require_once(__DIR__.'/api_update_user.php');        
   header("Location: /admin/You are now logged in");
   exit();
 }; 

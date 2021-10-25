@@ -14,7 +14,7 @@ ini_set('session.cookie_httponly', 1);
         class="login_form">
         <?php
   if( isset($display_error) ){
-       echo '<p class="url_decode">'.urldecode($display_error).'</p>';
+       echo '<p class="url_decode sign_in_up">'.urldecode($display_error).'</p>';
     }
 ?>
         <label>Email

@@ -15,10 +15,14 @@ if (!isset($_SESSION)) {
 <main class="admin_main">
 
     <?php
-if (isset($display_message)) {
+if (isset($display_message)) {?>
+    <p class="url_decode admin">
+        <?php
     // Use out to sanitize the read from the db, to prevent XXS 
-  echo '<p class="url_decode admin">'.out(urldecode($display_message)).'</p>';
-}
+  echo out(urldecode($display_message));
+}?>
+    </p>
+    <?php
    
 if (isset($note)) {
 ?>
@@ -54,23 +58,24 @@ if (isset($note)) {
                 placeholder="Write a comment"></textarea>
             <button>Send</button>
         </form>
-
-        <?php
+        <article class="comment_wrapper">
+            <?php
     foreach ($comments as $key => $comment) {
       $isMe = $comment['user_id'] == $_SESSION['uuid'];
       $comment_id = $comment['comment_id'];
       $user_id = $comment['user_id'];  
     ?>
-        <article class="comment <?= $isMe ? 'me' : ''?>">
-            <h4><?= $isMe ? 'You' : $comment['firstname'] . ' ' . $comment['lastname']; ?></h4>
-            <!-- Use out to sanitize the read from the db, to prevent XXS -->
-            <p><?= out($decrypted_comments[$key]); ?></p>
-            <p>Sent: <?= $comment['comment_ts'] ?></p>
-            <?= $isMe ? "<form action='/admin/delete/$comment_id/$user_id' method='POST'><button>Delete</button></form>" : ''?>
-        </article>
-        <?php
+            <div class="comment <?= $isMe ? 'me' : ''?>">
+                <h4><?= $isMe ? 'You' : $comment['firstname'] . ' ' . $comment['lastname']; ?></h4>
+                <!-- Use out to sanitize the read from the db, to prevent XXS -->
+                <p><?= out($decrypted_comments[$key]); ?></p>
+                <p>Sent: <?= $comment['comment_ts'] ?></p>
+                <?= $isMe ? "<form action='/admin/delete/$comment_id/$user_id' method='POST'><button>Delete</button></form>" : ''?>
+            </div>
+            <?php
     }
     ?>
+        </article>
     </section>
 </main>
 
