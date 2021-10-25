@@ -9,9 +9,17 @@ if(!isset($_SESSION)){
  if( !$_POST['note'] ){
   header('Location: /admin/You need to write something to save it...');
   exit();  
-}else{
-    echo 'The note is saved';
 }
+if( ! isset($_SESSION['csrf']) || ! isset($_POST['csrf_secret'])){
+    echo 'Hacker alert!!!!';
+exit();
+}
+if( !$_POST['csrf_secret'] == $_SESSION['csrf']){
+  echo 'Hacker alert!!!!';
+exit();
+}
+    echo 'The note is saved';
+
 
 
 //encrypting with CBC

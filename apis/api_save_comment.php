@@ -9,9 +9,17 @@ if(!isset($_SESSION)){
  if( !$_POST['comment_text'] ){
   header('Location: /admin/You need to write something to send it...');
   exit();  
-}else{
-    echo 'The comment is saved';
 }
+/* Compare if the session cookie is the same as the value of the hidden input field */
+if( ! isset($_SESSION['csrf']) || ! isset($_POST['csrf'])){
+    echo 'Hacker alert!!!!';
+exit();
+}
+if( !$_POST['csrf'] == $_SESSION['csrf']){
+    echo 'Hacker alert!!!!';
+exit();
+}
+    echo 'The comment is saved';
 
 
 //encrypting with CBC
