@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__.'/top.php');
+
+ini_set('session.cookie_httponly', 1);
 ?>
 
 <main class="signin">
