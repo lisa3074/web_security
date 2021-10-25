@@ -2,7 +2,8 @@
 try{
   $sDatabaseUserName = 'root';
   $sDatabasePassword = 'root';
-  $sDatabaseConnection = "mysql:host=localhost; dbname=web_security; charset=utf8mb4";
+  $sDatabaseConnection = "mysql:host=localhost; dbname=its_aug_30; charset=utf8mb4";
+    //$sDatabaseConnection = "mysql:host=localhost; dbname=web_security; charset=utf8mb4";
 
   // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
   $aDatabaseOptions = array(

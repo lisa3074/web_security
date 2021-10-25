@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__.'/../db.php');
+//Make sure that cookies can only be accessed in http requests (not JS), which prevents CSRF
+ini_set('session.cookie_httponly', 1);
 
 if(!isset($_SESSION)){
   session_start();
@@ -78,9 +80,12 @@ $logged = $user['logger'] + 1;
     session_destroy();
     exit();
   } 
+  $csrf = bin2hex(random_bytes(16));
   $_SESSION['email'] = $_POST['user_email'];
   $_SESSION['firstname'] = $user['firstname'];
   $_SESSION['uuid'] = $user['uuid'];
+  //Set a session cookie with a random value to compare when posting a comment
+   $_SESSION['csrf'] = $csrf;
   $set_new_logger = 0;
   require_once(__DIR__.'/postToDb.php');        
   header("Location: /admin/You are now logged in");

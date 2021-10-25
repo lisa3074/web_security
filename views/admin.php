@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../apis/api_display_comments.php');
 ini_set('session.cookie_httponly', 1);
 
 if (!isset($_SESSION)) {
-  session_start();
+    session_start();
 }
 ?>
 <nav class="top_nav">
@@ -31,6 +31,9 @@ if (isset($note)) {
 
     <form action="/admin"
         method="POST">
+        <input type="hidden"
+            name="csrf_secret"
+            value="<?= $_SESSION['csrf']?>">
         <textarea placeholder="Save secret note to self"
             name="note"></textarea>
         <button>Save</button>
@@ -42,6 +45,10 @@ if (isset($note)) {
     <section>
         <form action="/admin/comment"
             method="POST">
+            <!-- Hidden input field to prevent CSRF with value that coresponds to the session['csrf] -->
+            <input type="hidden"
+                name="csrf"
+                value="<?= $_SESSION['csrf']?>">
             <textarea name="comment_text"
                 id="comment"
                 placeholder="Write a comment"></textarea>
