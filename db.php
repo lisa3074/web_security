@@ -3,25 +3,13 @@ require_once(__DIR__.'/pass/pass.php');
 try{
   $sDatabaseUserName = 'sheclmzz_lisa';
   $sDatabasePassword = $pass;
-  $sDatabaseConnection = "mysql:host=localhost; dbname=sheclmzz_its_mandatory2; charset=utf8mb4";
-    //$sDatabaseConnection = "mysql:host=localhost; dbname=web_security; charset=utf8mb4";
-
-  // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+  $sDatabaseConnection = "mysql:host=premium42.web-hosting.com; dbname=sheclmzz_its_mandatory2; charset=utf8mb4";
   $aDatabaseOptions = array(
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-   // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ // Array with object
-    /*
-    [{"id":"1","name":"A","email":"@A","password":"passA"},{"id":"2","name":"B","email":"@B","password":"passB"}]
-    */
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    /*
-    [{"id":"1","name":"A","email":"@A","password":"passA"},{"id":"2","name":"B","email":"@B","password":"passB"}]
-    */
-    //PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_NUM
-    // [["1","A","@A","passA"],["2","B","@B","passB"]]
   );
   $db = new PDO( $sDatabaseConnection, $sDatabaseUserName, $sDatabasePassword, $aDatabaseOptions );
 }catch( PDOException $e){
-  echo '{"status":0,"message":"cannot connect to database"}';
+  echo '{"status":0,"message":"cannot connect to database"} '.$e;
   exit();
 }
