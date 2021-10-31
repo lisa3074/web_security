@@ -26,6 +26,10 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
+    .url_decode.admin {
+        padding-bottom: 0.5rem;
+    }
+
     .sign_in_up {
         padding-bottom: 1rem;
     }
@@ -78,6 +82,10 @@
         padding: 1rem;
     }
 
+    .admin_main {
+        max-width: 900px;
+        margin: 0 auto;
+    }
 
     textarea {
         width: 100%;
@@ -107,14 +115,11 @@
         border-radius: 20px 20px 20px 2px;
         background-color: #3e507c36;
         width: 100%;
-        max-width: 500px;
     }
 
-    .me p,
-    .me h4 {
-        max-width: 65ch;
-        margin-left: auto;
-        text-align: right;
+    .bold {
+        font-weight: 600;
+        font-style: italic;
     }
 
     .comment form {
@@ -125,9 +130,10 @@
         margin-bottom: 0;
     }
 
+    /* 
     .comment p:nth-child(2) {
         padding: 1rem 0;
-    }
+    } */
 
     .comment p:nth-child(3) {
         padding-bottom: 1rem;
@@ -136,8 +142,23 @@
     .me {
         justify-content: flex-end;
         background-color: #fff;
-        margin-left: auto;
+        /*  margin-left: auto; */
         border-radius: 20px 20px 2px 20px;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0 1rem;
+    }
+
+    .comment.question {
+        background-color: #32716d4a;
+    }
+
+    .heading {
+        padding-bottom: 1rem;
     }
 
     .signup,

@@ -14,7 +14,7 @@ try{
                     FROM user
 	                LEFT JOIN comments ON user.uuid = comments.user_id
 	                WHERE comment_text != :nothing 
-                    ORDER BY comments.comment_ts desc;
+                    ORDER BY comments.comment_ts asc;
                     ');
 $q->bindValue(':nothing', '');
   $q->execute();
@@ -36,9 +36,9 @@ for($i = 0; $i < count($comments); $i++){
 } 
 
 
-if(!$comments){
+/* if(!$comments){
    echo "There's no comments yet. Go write the first one...";
-} 
+}  */
 
 // exit(); 
 }catch(PDOException $ex){
