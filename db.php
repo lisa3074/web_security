@@ -1,5 +1,5 @@
 <?php
-/* require_once(__DIR__.'/pass/pass.php');
+ require_once(__DIR__.'/pass/pass.php');
 try{
   $sDatabaseUserName = 'sheclmzz_lisa';
   $sDatabasePassword = $pass;
@@ -10,6 +10,6 @@ try{
   );
   $db = new PDO( $sDatabaseConnection, $sDatabaseUserName, $sDatabasePassword, $aDatabaseOptions );
 }catch( PDOException $e){
-  echo '{"status":0,"message":"cannot connect to database"} '.$e;
+  echo '{status:0, message: cannot connect to database} '.$e;
   exit();
-} */
+} 
